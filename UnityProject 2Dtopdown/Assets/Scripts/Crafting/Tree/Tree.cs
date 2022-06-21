@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,11 +12,14 @@ public class Tree : MonoBehaviour
     [SerializeField] private GameObject woodPrefab; // prefab of wood
     [SerializeField] private int totalWood; // total wood in the tree
 
+    [SerializeField] private ParticleSystem leafs;
+
     public void OnHit()
     {
         treeHealth --;
 
         anim.SetTrigger ("IsHit");
+        leafs.Play();
 
         if (treeHealth <= 0)
         {
